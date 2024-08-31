@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Watcher</title>
+    <style>
+        body{
+            font-family: monospace;
+        }
+        #logs-container {
+            padding: 20px;
+            height: 80vh;
+            overflow-y: auto;
+            border: 1px solid;
+            background-color: azure;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="padding: 20px;">Real Time Logs Watcher</h1>
+    <div id="logs-container"></div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+        const logsContainer = document.getElementById('logs-container');
+
+        socket.onopen = function() {
+            console.log('connected to socket');
+        }
+
+        socket.onmessage = function (event) {
+            logsContainer.innerText += event.data ;
+        }
+
+        socket.onclose = function () {
+            console.log('Websocket connection closed');
+        }
+
+        socket.onerror = function(error){
+            console.error('Websocket error:', error);
+            retry();
+        }
+
+    </script>
+</body>
+</html>

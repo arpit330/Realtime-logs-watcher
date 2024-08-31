@@ -1,0 +1,17 @@
+{
+  "name": "logs-watcher",
+  "version": "1.0.0",
+  "description": "A server to watch log file on and send those log updates on client side",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arpit Sahu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.4",
+    "ws": "^8.18.0"
+  }
+}
